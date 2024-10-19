@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Your Weather App</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css'><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<meta name="viewport" content="width=device-width" />
+
+<!-- Desktop Navbar -->
+<div class="navbar">
+  <button class="nav-button theme-1" onclick="setTheme('theme-1')">Night</button>
+  <button class="nav-button theme-2" onclick="setTheme('theme-2')">Morning</button>
+  <button class="nav-button theme-3" onclick="setTheme('theme-3')">Midday</button>
+  <button class="nav-button light-theme" onclick="setTheme('light-theme')">Light Mode</button>
+  <button class="nav-button dark-theme" onclick="setTheme('dark-theme')">Dark Mode</button>
+</div>
+
+<div class="container text-center">
+  
+  <div class="banner">
+    <h1 style="text-shadow:1px 1px 10px #29293d;">Your Weather App <i class="fas fa-cloud-meatball"></i></h1>
+    <small>Latest Weather Update</small>
+    
+  </div>
+  
+  <div class="main-content text-center">  
+    
+
+    <form id="man-srch-form" class="row collapse">
+      <div class="form-group col-xs-12 col-sm-12">
+        <h4 class="pull-left">Search for a City or Country</h4>
+      </div>
+      <div class="form-group col-xs-12 col-sm-10">
+        <input id="searchInput" type="text" class="form-control" placeholder="Enter City or Country" />
+        <button id="btnSearch" class="btn btn-default" type="button" onclick="searchWeather(); this.blur();" >Search <i class="fa fa-search"></i></button>
+      </div>
+    </form>
+
+    <div class="weather-data-container" data-toggle="collapse" data-target="#man-srch-form">
+      <!-- <div class="row pull-right weather-temp-settings">
+        <a id="tMetric" href="#">metric</a><span> | </span><a id="tImperial" href="#">imperial</a>
+      </div> -->
+
+    <div class="row align-items-center">
+      <div class="col-xs-6 col-md-6 col-lg-6 text-center">     
+        <div class="clockDisplay-container">
+          <p id="dateDisplay"></p>
+          <h3 id="clockDisplay"></h3>
+        </div>
+      </div><!---end of col-xs-6-->
+      
+      <div class="col-xs-6 col-md-6 col-lg-6 text-center">
+        <div class="curLocationDisp-container">
+          <h1 id="curLocationDisplay">N/A</h1>
+          <div id="weather-data">
+            <!-- Weather data here -->
+          </div>
+        </div>
+      </div><!---end of col-xs-6-->
+    </div><!---end row--->
+
+      
+      <div class="row">
+        <div class="col-xs-6 col-md-3">
+          <div>
+            <h4 class="disp-label">Temp</h4>
+            <p id="tempDisplay">N/A</p>
+          </div>
+        </div><!---end of col-xs-6-->
+
+        <div class="col-xs-6 col-md-3">
+          <div>
+            <h4 class="disp-label">Real Feel</h4>
+            <p id="feelDisplay">N/A</p>
+          </div>
+        </div><!---end of col-xs-6-->
+
+        <div class="col-xs-6 col-md-3">
+          <div>
+            <h4 class="disp-label">Humidity</h4>
+            <p id="humidDisplay">N/A</p>
+          </div>
+        </div><!---end of col-xs-6-->
+
+        <div class="col-xs-6 col-md-3">
+          <div>
+            <h4 class="disp-label">Wind</h4>
+            <p id="windDisplay">N/A</p>
+          </div>
+        </div><!---end of col-xs-6-->
+      </div><!---end row--->
+
+      
+    </div><!--end weather-data-container-->
+    
+  </div><!--end main-content-->
+  
+  <!--TOMORROWS FORECAST-->
+  <button id="btnNxtForecast"></button>
+  
+  <div id="nextForecast-container" class="container text-center" style="display:none;">
+    Forecast
+    <hr/>
+    <div id="nxt-forecast-contents" class="nxt-forecast-content text-center">
+   </div><!----next forecast content--->
+  </div>
+</div>
+<!-- partial -->
+
+<script>
+  // Toggle mobile navigation display
+  function toggleMobileNav() {
+    const mobileNav = document.getElementById('mobileNav');
+    mobileNav.classList.toggle('show');
+  }
+
+  // Theme switching function (same as before)
+  function setTheme(themeName) {
+    document.body.className = themeName;
+    localStorage.setItem('theme', themeName);
+  }
+
+  // Load theme on page load
+  window.onload = function () {
+    const savedTheme = localStorage.getItem('theme') || 'light-theme';
+    setTheme(savedTheme);
+  };
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>
